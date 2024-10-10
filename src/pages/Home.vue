@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
-const input = ref()
-</script>
-
 <template>
   <el-input v-model="input" placeholder="请输入内容"></el-input>
   <el-tag>标签一</el-tag>
@@ -39,7 +30,24 @@ const input = ref()
     >.
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <div @click="goAbout">to about</div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+defineProps<{ msg: string }>()
+
+const router = useRouter()
+
+const count = ref(0)
+const input = ref()
+
+const goAbout = () => {
+  router.push('/about')
+}
+</script>
 
 <style scoped>
 .read-the-docs {

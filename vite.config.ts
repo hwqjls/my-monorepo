@@ -13,7 +13,7 @@ export default defineConfig({
     vue(),
     AutoImport({
       imports: ['vue'],
-      resolvers:[ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()],
       dts: path.resolve(pathSrc, 'auto-imports.d.ts')
     }),
     Components({
@@ -21,4 +21,9 @@ export default defineConfig({
       dts: path.resolve(pathSrc, 'components.d.ts')
     }),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, 'src')
+    }
+  }
 })
