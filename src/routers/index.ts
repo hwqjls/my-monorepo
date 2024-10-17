@@ -1,7 +1,15 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter, createWebHashHistory } from 'vue-router'
 
-import Home from '@/pages/Home.vue'
-import About from '@/pages/About.vue'
+const mode = import.meta.env.VITE_ROUTER_MODE;
+
+const routerMode = {
+  hash: () => createWebHashHistory(),
+  history: () => createWebHistory()
+}
+
+
+import Home from '@/views/Home.vue'
+import About from '@/views/About.vue'
 
 const routes = [
   { path: '/', component: Home },

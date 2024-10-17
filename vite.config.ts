@@ -14,12 +14,12 @@ export default defineConfig({
     AutoImport({
       imports: ['vue'],
       resolvers: [ElementPlusResolver()],
-      dts: path.resolve(pathSrc, 'auto-imports.d.ts')
+      dts: path.resolve(pathSrc, 'typings/auto-imports.d.ts')
     }),
     Components({
       resolvers: [ElementPlusResolver()],
-      dts: path.resolve(pathSrc, 'components.d.ts')
-    }),
+      dts: path.resolve(pathSrc, 'typings/components.d.ts')
+    })
   ],
   resolve: {
     alias: {
