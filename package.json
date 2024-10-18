@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/qs": "^6.9.16",
+    "axios": "^1.7.7",
     "element-plus": "^2.8.4",
+    "md5": "^2.3.0",
+    "pinia": "^2.2.4",
+    "pinia-plugin-persistedstate": "^3.2.1",
+    "qs": "^6.13.0",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.5",
     "@types/node": "^22.7.5",
     "@types/vue-router": "^2.0.0",
     "@vitejs/plugin-vue": "^5.1.4",
