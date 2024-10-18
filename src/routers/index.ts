@@ -1,4 +1,5 @@
 import { createWebHistory, createRouter, createWebHashHistory } from 'vue-router'
+import { staticRoueter } from './modules/staticRouter';
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
@@ -7,18 +8,11 @@ const routerMode = {
   history: () => createWebHistory()
 }
 
-
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-
-const routes = [
-  { path: '/', component: Home },
-  { path: '/About', component: About },
-]
-
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+  history: routerMode[mode](),
+  routes: [...staticRoueter],
+  strict: false,
+  scrollBehavior: () => ({ left: 0, top: 0 })
 })
 
 export default router
