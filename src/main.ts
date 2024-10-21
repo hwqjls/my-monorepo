@@ -4,6 +4,7 @@ import "@/styles/reset.scss";
 import "@/styles/common.scss";
 import 'element-plus/dist/index.css'
 import * as Icons from "@element-plus/icons-vue";
+import pinia from "@/stores";
 
 import App from '@/App.vue'
 
@@ -15,4 +16,5 @@ Object.keys(Icons).forEach(key => {
 })
 
 app.use(router)
+  .use (pinia)
   .mount('#app')

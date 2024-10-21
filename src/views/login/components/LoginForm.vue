@@ -57,7 +57,9 @@
 <script lang="ts" setup>
 import { ElForm } from 'element-plus'
 import { Login } from '@/api/interface'
+import { loginApi } from "@/api/modules/login";
 import { CircleClose, UserFilled } from '@element-plus/icons-vue'
+import md5 from "md5";
 
 type FormInstance = InstanceType<typeof ElForm>
 const loginFormRef = ref<FormInstance>()
@@ -72,7 +74,19 @@ const loginForm = reactive<Login.ReqLoginForm>({
   password: '',
 })
 
-const login = (formEl: FormInstance | undefined) => {}
+const login = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.validate(async valid => {
+    if (!valid) return
+    loading.value = true;
+    try {
+      // 1.执行登录接口
+      await loginApi({...loginForm, password: md5(loginForm.password)});
+    } finally {
+      loading.value = false;
+    }
+  })
+}
 
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
@@ -92,4 +106,6 @@ onBeforeUnmount(() => {
   document.onkeydown = null
 })
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "../index.scss";
+</style>

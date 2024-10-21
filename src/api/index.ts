@@ -1,9 +1,9 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from "axios";
 import { showFullScreenLoading, tryHideFullScreenLoading } from "@/components/Loading/fullScreen";
-import { ResultEnum } from "@/enum/httpEnum";
+import { ResultData } from "@/api/interface";
+import { ResultEnum } from "@/enums/httpEnum";
 import { AxiosCanceler } from "./helper/axiosCancel";
 import { useUserStore } from "@/stores/modules/user";
-import { ResultData } from "./interface";
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   loading?: boolean;
@@ -12,8 +12,7 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 
 const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
-  // baseURL: import.meta.env.VITE_API_URL as string,
-  baseURL: 'https://mock.mengxuegu.com/mock/629d727e6163854a32e8307e',
+  baseURL: import.meta.env.VITE_API_URL as string,
   // 设置超时时间
   timeout: ResultEnum.TIMEOUT as number,
   // 跨域时候允许携带凭证
@@ -44,7 +43,6 @@ class RequestHttp {
         if (config.headers && typeof config.headers.set === "function") {
           config.headers.set("x-access-token", userStore.token);
         }
-
         return config;
       },
       (error: AxiosError) => {
@@ -59,15 +57,16 @@ class RequestHttp {
     this.service.interceptors.response.use(
       (response: AxiosResponse & { config: CustomAxiosRequestConfig }) => {
         const { data, config } = response;
-        console.log(data);
-        config.loading && tryHideFullScreenLoading();
-        return data
+
+        // 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
+        return data;
       },
       async (error: AxiosError) => {
         const { response } = error;
-        tryHideFullScreenLoading();
+
+        return Promise.reject(error);
       }
-    )
+    );
   }
 
   /**
