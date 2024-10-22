@@ -55,11 +55,18 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ElForm } from 'element-plus'
 import { Login } from '@/api/interface'
-import { loginApi } from "@/api/modules/login";
+import { loginApi } from '@/api/modules/login'
 import { CircleClose, UserFilled } from '@element-plus/icons-vue'
-import md5 from "md5";
+import md5 from 'md5'
+import { initDynamicRouter } from '@/routers/modules/dynamicRouter'
+import router from '@/routers'
+import { HOME_URL } from '@/config'
+import { getTimeState } from '@/utils'
+import { useUserStore } from '@/stores/modules/user'
+import { ElForm } from 'element-plus'
+
+const userStore = useUserStore()
 
 type FormInstance = InstanceType<typeof ElForm>
 const loginFormRef = ref<FormInstance>()
@@ -76,14 +83,30 @@ const loginForm = reactive<Login.ReqLoginForm>({
 
 const login = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.validate(async valid => {
+  formEl.validate(async (valid) => {
     if (!valid) return
-    loading.value = true;
+    loading.value = true
     try {
       // 1.执行登录接口
-      await loginApi({...loginForm, password: md5(loginForm.password)});
+      const { data } = await loginApi({
+        ...loginForm,
+        password: md5(loginForm.password),
+      })
+      userStore.setToken(data.access_token)
+
+      // 2.添加动态路由
+      await initDynamicRouter()
+
+      // 4.跳转到首页
+      router.push(HOME_URL)
+      ElNotification({
+        title: getTimeState(),
+        message: "欢迎登录 Geeker-Admin",
+        type: "success",
+        duration: 3000
+      });
     } finally {
-      loading.value = false;
+      loading.value = false
     }
   })
 }
@@ -107,5 +130,5 @@ onBeforeUnmount(() => {
 })
 </script>
 <style lang="scss" scoped>
-@use "../index.scss";
+@use '../index.scss';
 </style>
