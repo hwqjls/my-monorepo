@@ -26,6 +26,5 @@ export function createProxy(list: ProxyList = []) {
       ...(isHttps ? { secure: false } : {})
     };
   }
-  debugger
   return ret;
 }
