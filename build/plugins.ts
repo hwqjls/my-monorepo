@@ -7,7 +7,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import eslintPlugin from "vite-plugin-eslint";
 import { createHtmlPlugin } from "vite-plugin-html";
 
-const pathSrc = path.resolve(__dirname, "src");
+const pathSrc = path.resolve(__dirname, "../src");
 
 /**
  * 创建 vite 插件
