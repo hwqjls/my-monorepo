@@ -1,32 +1,29 @@
-import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite'
-import path from 'path'
+import { ConfigEnv, defineConfig, loadEnv, UserConfig } from "vite";
+import path from "path";
 import { createVitePlugins } from "./build/plugins";
 import { wrapperEnv } from "./build/getEnv";
 import { createProxy } from "./build/proxy";
 import pkg from "./package.json";
 import dayjs from "dayjs";
 
-
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
   lastBuildTime: dayjs().format("YYYY-MM-DD HH:mm:ss")
-}
-
-
+};
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
-  const root = process.cwd()
-  const env = loadEnv(mode, root)
-  const viteEnv = wrapperEnv(env)
+  const root = process.cwd();
+  const env = loadEnv(mode, root);
+  const viteEnv = wrapperEnv(env);
 
   return {
     base: viteEnv.VITE_PUBLIC_PATH,
     root,
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, 'src')
+        "@": path.resolve(__dirname, "src")
       }
     },
     define: {
@@ -35,9 +32,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler' // or "modern", "legacy"
-        },
-      },
+          api: "modern-compiler" // or "modern", "legacy"
+        }
+      }
     },
     server: {
       host: "0.0.0.0",
@@ -76,5 +73,5 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         }
       }
     }
-  }
-})
+  };
+});
