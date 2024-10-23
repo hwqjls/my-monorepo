@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { AuthState } from "@/stores/interface";
-import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
+import { getAuthButtonListApi, getAuthMenuListApi } from "@/api/modules/login";
 import { getFlatMenuList } from "@/utils";
 
 export const useAuthStore = defineStore({
@@ -19,16 +19,16 @@ export const useAuthStore = defineStore({
     // 菜单权限列表 ==> 这里的菜单没有经过任何处理
     authMenuListGet: state => state.authMenuList,
     // 菜单权限列表 ==> 扁平化之后的一维数组菜单，主要用来添加动态路由
-    flatMenuListGet: state => getFlatMenuList(state.authMenuList),
+    flatMenuListGet: state => getFlatMenuList(state.authMenuList)
   },
   actions: {
     async getAuthButtonList() {
-      const { data } = await getAuthButtonListApi()
-      this.authButtonList = data
+      const { data } = await getAuthButtonListApi();
+      this.authButtonList = data;
     },
     async getAuthMenuList() {
-      const { data } = await getAuthMenuListApi()
-      this.authMenuList = data
-    },
+      const { data } = await getAuthMenuListApi();
+      this.authMenuList = data;
+    }
   }
-})
+});

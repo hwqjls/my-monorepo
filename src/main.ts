@@ -1,20 +1,18 @@
-import { createApp } from 'vue'
-import router from './routers'
+import { createApp } from "vue";
+import router from "./routers";
 import "@/styles/reset.scss";
 import "@/styles/common.scss";
-import 'element-plus/dist/index.css'
+import "element-plus/dist/index.css";
 import * as Icons from "@element-plus/icons-vue";
 import pinia from "@/stores";
 
-import App from '@/App.vue'
+import App from "@/App.vue";
 
-const app = createApp(App)
+const app = createApp(App);
 
 // 注册element图标组件
 Object.keys(Icons).forEach(key => {
-  app.component(key, Icons[key as keyof typeof Icons])
-})
+  app.component(key, Icons[key as keyof typeof Icons]);
+});
 
-app.use(router)
-  .use (pinia)
-  .mount('#app')
+app.use(router).use(pinia).mount("#app");

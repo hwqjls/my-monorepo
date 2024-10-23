@@ -16,6 +16,6 @@ export const useUserStore = defineStore({
     setUserInfo(userInfo: UserState["userInfo"]) {
       this.userInfo = userInfo;
     },
-    persist: piniaPersistConfig('geeker-user')
+    persist: piniaPersistConfig("geeker-user")
   }
-})
+});
