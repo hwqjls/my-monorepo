@@ -1,10 +1,10 @@
 import { RouteRecordRaw } from "vue-router";
-import { LOGIN_URL } from "@/config";
+import { HOME_URL, LOGIN_URL } from "@/config";
 
 export const staticRoueter: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: LOGIN_URL
+    redirect: HOME_URL
   },
   {
     path: LOGIN_URL,
@@ -13,5 +13,37 @@ export const staticRoueter: RouteRecordRaw[] = [
     meta: {
       title: "登录"
     }
+  }
+];
+
+export const errorRouter = [
+  {
+    path: "/403",
+    name: "403",
+    component: () => import("@/components/ErrorMessage/403.vue"),
+    meta: {
+      title: "403页面"
+    }
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("@/components/ErrorMessage/404.vue"),
+    meta: {
+      title: "404页面"
+    }
+  },
+  {
+    path: "/500",
+    name: "500",
+    component: () => import("@/components/ErrorMessage/500.vue"),
+    meta: {
+      title: "500页面"
+    }
+  },
+  // Resolve refresh page, route warnings
+  {
+    path: "/:pathMatch(.*)*",
+    component: () => import("@/components/ErrorMessage/404.vue")
   }
 ];

@@ -7,6 +7,9 @@ export {};
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    403: typeof import('./../components/ErrorMessage/403.vue')['default']
+    404: typeof import('./../components/ErrorMessage/404.vue')['default']
+    500: typeof import('./../components/ErrorMessage/500.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
