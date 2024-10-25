@@ -13,6 +13,14 @@ export const staticRoueter: RouteRecordRaw[] = [
     meta: {
       title: "登录"
     }
+  },
+  {
+    path: "/layout",
+    name: "layout",
+    component: () => import("@/layouts/index.vue"),
+    // component: () => import("@/layouts/indexAsync.vue"),
+    redirect: HOME_URL,
+    children: []
   }
 ];
 
