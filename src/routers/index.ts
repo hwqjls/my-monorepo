@@ -1,10 +1,10 @@
-import { createWebHistory, createRouter, createWebHashHistory } from "vue-router";
-import { staticRoueter } from "./modules/staticRouter";
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 import { useUserStore } from "@/stores/modules/user";
 import { useAuthStore } from "@/stores/modules/auth";
-import NProgress from "@/config/nprogress";
 import { LOGIN_URL, ROUTER_WHITE_LIST } from "@/config";
-import { initDynamicRouter } from "./modules/dynamicRouter";
+import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
+import { staticRouter, errorRouter } from "@/routers/modules/staticRouter";
+import NProgress from "@/config/nprogress";
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
@@ -31,7 +31,7 @@ const routerMode = {
  * */
 const router = createRouter({
   history: routerMode[mode](),
-  routes: [...staticRoueter],
+  routes: [...staticRouter, ...errorRouter],
   strict: false,
   scrollBehavior: () => ({ left: 0, top: 0 })
 });

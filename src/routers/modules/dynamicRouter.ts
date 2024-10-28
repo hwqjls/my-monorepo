@@ -1,13 +1,16 @@
 import router from "@/routers/index";
-import { useUserStore } from "@/stores/modules/user";
-import { useAuthStore } from "@/stores/modules/auth";
-import { ElNotification } from "element-plus";
 import { LOGIN_URL } from "@/config";
 import { RouteRecordRaw } from "vue-router";
+import { ElNotification } from "element-plus";
+import { useUserStore } from "@/stores/modules/user";
+import { useAuthStore } from "@/stores/modules/auth";
 
 // 引入 views 文件夹下所有 vue 文件
 const modules = import.meta.glob("@/views/**/*.vue");
 
+/**
+ * @description 初始化动态路由
+ */
 export const initDynamicRouter = async () => {
   const userStore = useUserStore();
   const authStore = useAuthStore();
@@ -17,7 +20,7 @@ export const initDynamicRouter = async () => {
     await authStore.getAuthMenuList();
     await authStore.getAuthButtonList();
 
-    // 2.判断当前用户有没有权限
+    // 2.判断当前用户有没有菜单权限
     if (!authStore.authMenuListGet.length) {
       ElNotification({
         title: "无权限访问",
@@ -33,7 +36,7 @@ export const initDynamicRouter = async () => {
     // 3.添加动态路由
     authStore.flatMenuListGet.forEach(item => {
       item.children && delete item.children;
-      if (item.component && typeof item.component === "string") {
+      if (item.component && typeof item.component == "string") {
         item.component = modules["/src/views" + item.component + ".vue"];
       }
       if (item.meta.isFull) {
