@@ -21,6 +21,7 @@
     </el-aside>
     <el-container>
       <el-header>
+        <ToolBarLeft />
         <ToolBarRight />
       </el-header>
       main
@@ -32,6 +33,7 @@ import { useRoute } from "vue-router";
 import { useAuthStore } from "@/stores/modules/auth";
 import { useGlobalStore } from "@/stores/modules/global";
 import SubMenu from "@/layouts/components/Menu/SubMenu.vue";
+import ToolBarLeft from "@/layouts/components/Header/ToolBarLeft.vue";
 import ToolBarRight from "@/layouts/components/Header/ToolBarRight.vue";
 
 const title = import.meta.env.VITE_GLOB_APP_TITLE;
