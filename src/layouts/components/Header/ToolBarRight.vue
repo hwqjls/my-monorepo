@@ -1,12 +1,15 @@
 <template>
   <div class="tool-bar-ri">
-    <div class="header-icon"></div>
+    <div class="header-icon">
+      <Fullscreen id="fullscreen"></Fullscreen>
+    </div>
     <span class="username">{{ username }}</span>
     <Avatar />
   </div>
 </template>
 <script lang="ts" setup>
 import { useUserStore } from "@/stores/modules/user";
+import Fullscreen from "./components/Fullscreen.vue";
 import Avatar from "./components/Avatar.vue";
 
 const userStore = useUserStore();
