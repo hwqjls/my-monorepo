@@ -4,7 +4,7 @@ import piniaPersistConfig from "../helper/persist";
 import { DEFAULT_PRIMARY } from "@/config";
 
 export const useGlobalStore = defineStore({
-  id: "geeker-global",
+  id: "vite-global",
   // 修改默认值之后，需清除 localStorage 数据
   state: (): GlobalState => ({
     // 布局模式 (纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns)

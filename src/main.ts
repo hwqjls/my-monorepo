@@ -7,6 +7,8 @@ import "@/assets/iconfont/iconfont.scss";
 // font css
 import "@/assets/fonts/font.scss";
 import "element-plus/dist/index.css";
+// custom element css
+import "@/styles/element.scss";
 import * as Icons from "@element-plus/icons-vue";
 import pinia from "@/stores";
 
