@@ -11,6 +11,7 @@
           </template>
         </el-tab-pane>
       </el-tabs>
+      <MoreButton />
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ import { useAuthStore } from "@/stores/modules/auth";
 import { useGlobalStore } from "@/stores/modules/global";
 import { useRoute, useRouter } from "vue-router";
 import { TabsPaneContext, TabPaneName } from "element-plus";
+import MoreButton from "./components/MoreButton.vue";
 
 const route = useRoute();
 const router = useRouter();

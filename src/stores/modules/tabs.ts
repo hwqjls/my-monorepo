@@ -36,6 +36,25 @@ export const useTabsStore = defineStore({
       // set tabs
       this.tabsMenuList = this.tabsMenuList.filter(item => item.path !== tabPath);
     },
+    async closeTabsOnSide(path: string, type: "left" | "right") {
+      const currentIndex = this.tabsMenuList.findIndex(item => item.path === path);
+      if (currentIndex !== -1) {
+        const range = type === "left" ? [0, currentIndex] : [currentIndex + 1, this.tabsMenuList.length];
+        this.tabsMenuList = this.tabsMenuList.filter((item, index) => {
+          return index < range[0] || index >= range[1] || !item.close;
+        });
+      }
+      // set keepalive
+      const KeepAliveList = this.tabsMenuList.filter(item => item.isKeepAlive);
+      keepAliveStore.setKeepAliveName(KeepAliveList.map(item => item.path));
+    },
+    async closeMultipleTab(tabsMenuValue?: string) {
+      this.tabsMenuList = this.tabsMenuList.filter(item => {
+        return item.path === tabsMenuValue || !item.close;
+      });
+      const keepAliveList = this.tabsMenuList.filter(item => item.isKeepAlive);
+      keepAliveStore.setKeepAliveName(keepAliveList.map(item => item.path));
+    },
     async setTabs(tabsMenuList: TabsMenuProps[]) {
       this.tabsMenuList = tabsMenuList;
     }
