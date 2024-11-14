@@ -80,4 +80,6 @@ onBeforeUnmount(() => {
   window.removeEventListener("resize", listeningWindow);
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "./index";
+</style>
