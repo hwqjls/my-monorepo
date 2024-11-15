@@ -10,6 +10,7 @@ declare module 'vue' {
     403: typeof import('./../components/ErrorMessage/403.vue')['default']
     404: typeof import('./../components/ErrorMessage/404.vue')['default']
     500: typeof import('./../components/ErrorMessage/500.vue')['default']
+    CardWrapper: typeof import('./../components/CardWrapper/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -44,5 +45,6 @@ declare module 'vue' {
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Title: typeof import('./../components/Title/index.vue')['default']
   }
 }
