@@ -425,7 +425,7 @@
     {
       "path": "/form",
       "name": "form",
-      "redirect": "/form/proForm",
+      "redirect": "/form/cardForm",
       "meta": {
         "icon": "Tickets",
         "title": "表单 Form",
@@ -437,12 +437,12 @@
       },
       "children": [
         {
-          "path": "/form/proForm",
-          "name": "proForm",
-          "component": "/form/proForm/index",
+          "path": "/form/cardForm",
+          "name": "cardForm",
+          "component": "/form/cardForm/index",
           "meta": {
             "icon": "Menu",
-            "title": "超级 Form",
+            "title": "卡片 Form",
             "isLink": "",
             "isHide": false,
             "isFull": false,
@@ -485,6 +485,20 @@
           "meta": {
             "icon": "Menu",
             "title": "动态 Form",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/form/proForm",
+          "name": "proForm",
+          "component": "/form/proForm/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "超级 Form",
             "isLink": "",
             "isHide": false,
             "isFull": false,
