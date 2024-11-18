@@ -234,6 +234,20 @@
           }
         },
         {
+          "path": "/assembly/card",
+          "name": "card",
+          "component": "/assembly/card/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "卡片容器",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
           "path": "/assembly/tabs",
           "name": "tabs",
           "component": "/assembly/tabs/index",
