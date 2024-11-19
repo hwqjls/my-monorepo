@@ -6,7 +6,7 @@
   >
     <template v-for="card in cardArr" :key="card.slotName">
       <Title v-if="card.title" :bg-color="card.titleBgColor">{{ card.title }}</Title>
-      <div class="card-content">
+      <div class="card-content" :class="{ 'flx-center': card.isCenter }">
         <slot :name="card.slotName" />
       </div>
     </template>
