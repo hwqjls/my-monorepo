@@ -11,6 +11,7 @@ declare module 'vue' {
     404: typeof import('./../components/ErrorMessage/404.vue')['default']
     500: typeof import('./../components/ErrorMessage/500.vue')['default']
     CardWrapper: typeof import('./../components/CardWrapper/index.vue')['default']
+    ECharts: typeof import('./../components/ECharts/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
