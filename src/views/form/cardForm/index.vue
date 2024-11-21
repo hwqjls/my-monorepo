@@ -21,13 +21,7 @@
             <el-form-item label="活动时间" required>
               <el-col :span="11">
                 <el-form-item prop="date1">
-                  <el-date-picker
-                    v-model="cardForm.date1"
-                    type="date"
-                    aria-label="Pick a date"
-                    placeholder="日期"
-                    style="width: 100%"
-                  />
+                  <el-date-picker v-model="cardForm.date1" type="date" placeholder="日期" style="width: 100%" />
                 </el-form-item>
               </el-col>
               <el-col class="text-center" :span="1" :offset="1">
@@ -35,7 +29,7 @@
               </el-col>
               <el-col :span="11">
                 <el-form-item prop="date2">
-                  <el-time-picker v-model="cardForm.date2" aria-label="Pick a time" placeholder="时间" style="width: 100%" />
+                  <el-time-picker v-model="cardForm.date2" placeholder="时间" style="width: 100%" />
                 </el-form-item>
               </el-col>
             </el-form-item>

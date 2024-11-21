@@ -27,6 +27,7 @@ const rules = reactive<FormRules>({
   name: [requiredRule, { min: 3, max: 5, message: "Length should be 3 to 5", trigger: "blur" }],
   phone: [{ required: true, validator: checkPhoneNumber, trigger: "blur" }],
   region: [requiredRule],
+  status: [requiredRule],
   date1: [
     {
       type: "date",
