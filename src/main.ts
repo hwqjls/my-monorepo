@@ -10,6 +10,9 @@ import "element-plus/dist/index.css";
 // custom element css
 import "@/styles/element.scss";
 import * as Icons from "@element-plus/icons-vue";
+// custom directives
+import directives from "@/directives/index";
+// pinia store
 import pinia from "@/stores";
 
 import App from "@/App.vue";
@@ -21,4 +24,4 @@ Object.keys(Icons).forEach(key => {
   app.component(key, Icons[key as keyof typeof Icons]);
 });
 
-app.use(router).use(pinia).mount("#app");
+app.use(router).use(directives).use(pinia).mount("#app");
