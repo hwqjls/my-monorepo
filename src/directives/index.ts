@@ -1,8 +1,10 @@
 import { App, Directive } from "vue";
 import copy from "./modules/copy";
+import waterMarker from "./modules/waterMarker";
 
 const directivesList: { [key: string]: Directive } = {
-  copy
+  copy,
+  waterMarker
 };
 
 const directives = {
