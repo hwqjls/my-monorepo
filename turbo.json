@@ -15,6 +15,7 @@
     "clean": {},
     "prepare": {},
     "release": {},
-    "commit": { "dependsOn": ["^commit"] }
+    "commit": { "dependsOn": ["^commit"] },
+    "pub:build": { "dependsOn": ["^build"], "outputs": ["dist/**"] }
   }
 }
