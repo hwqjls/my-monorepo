@@ -8,11 +8,22 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "turbo run commit"
+    "commit": "turbo run commit",
+    "pub:changeset": "pnpm changeset",
+    "pub:build": "turbo run build --filter=\"@easy-editor/*\" && turbo run types --filter=\"@easy-editor/*\"",
+    "pub:alpha": "pnpm changeset pre enter alpha",
+    "pub:beta": "pnpm changeset pre enter beta",
+    "pub:rc": "pnpm changeset pre enter rc",
+    "pub:exit-pre": "pnpm changeset pre exit",
+    "pub:version": "pnpm changeset version",
+    "pub:release": "pnpm changeset publish"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@changesets/cli": "^2.29.5"
+  },
   "devDependencies": {
     "turbo": "^2.5.4"
   },
