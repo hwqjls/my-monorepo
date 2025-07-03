@@ -22,26 +22,26 @@ jobs:
 
     # 执行步骤
     steps:
-	    # 1. 检出代码
+      # 1. 检出代码
       - name: Checkout Branch
         uses: actions/checkout@v3
 
-			# 2. 安装 pnpm
+      # 2. 安装 pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
-			# 3. 设置 Node.js 环境
+      # 3. 设置 Node.js 环境
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-			# 4. 安装项目依赖
+      # 4. 安装项目依赖
       - name: Install Dependencies
         run: pnpm install
 
-			# 5. 创建版本更新 PR
+      # 5. 创建版本更新 PR
       - name: Create Release Pull Request
         uses: changesets/action@v1
         with:
