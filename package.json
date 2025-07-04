@@ -6,9 +6,7 @@
   "scripts": {
     "build": "turbo run build:dev",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "turbo run commit",
     "pub:changeset": "pnpm changeset",
     "pub:build": "turbo run build:dev --filter=\"apps/vite-pro/*\" && turbo run types --filter=\"apps/vite-pro/*\"",
     "pub:alpha": "pnpm changeset pre enter alpha",
@@ -16,7 +14,11 @@
     "pub:rc": "pnpm changeset pre enter rc",
     "pub:exit-pre": "pnpm changeset pre exit",
     "pub:version": "pnpm changeset version",
-    "pub:release": "pnpm changeset publish"
+    "pub:release": "pnpm changeset publish",
+    "lint": "turbo run lint",
+    "lint:lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "commit": "git add -A && czg && git push"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +27,33 @@
     "@changesets/cli": "^2.29.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "cz-git": "^1.10.1",
+    "czg": "^1.10.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "turbo": "^2.5.4"
+  },
+  "engines": {
+    "node": ">=16.18.0"
+  },
+  "browserslist": {
+    "production": [
+      "> 1%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   },
   "packageManager": "pnpm@9.12.2"
 }
